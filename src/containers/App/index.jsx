@@ -15,6 +15,8 @@ import SharedArticleTab from '@containers/SharedArticleTab';
 
 import {
   WrapApp,
+  WrapBodyApp,
+  WrapHeaderApp,
 } from './styled';
 
 const history = createBrowserHistory();
@@ -29,14 +31,18 @@ export default class index extends Component {
     return (
       <WrapApp>
         <Router history={history}>
-          <Header />
-          <Switch style={{ height: '100%' }}>
-            <Route path="/" exact component={TestingTab} />
-            <Route path="/test" component={TestingTab} />
-            <Route path="/share" component={SharedArticleTab} />
-            <Route path="/learn" component={CourseTab} />
-            <Route path="/view" component={SchoolViewTab} />
-          </Switch>
+          <WrapHeaderApp>
+            <Header />
+          </WrapHeaderApp>
+          <WrapBodyApp>
+            <Switch style={{ height: '100%' }}>
+              <Route path="/" exact component={TestingTab} />
+              <Route path="/test" component={TestingTab} />
+              <Route path="/share" component={SharedArticleTab} />
+              <Route path="/learn" component={CourseTab} />
+              <Route path="/view" component={SchoolViewTab} />
+            </Switch>
+          </WrapBodyApp>
         </Router>
       </WrapApp>
     );

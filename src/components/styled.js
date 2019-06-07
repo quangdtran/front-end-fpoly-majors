@@ -12,12 +12,13 @@ export const WrapHeader = styled.div`
   background: ${theme.bgColor.blue};
   display: flex;
   flex-direction: row;
-  height: 15%;
+  height: 100%;
 `;
 
 export const HeaderLink = styled(NavLink)`
   color: white;
   text-decoration: none;
+  user-select: none;
 `;
 
 export const WrapHeaderLogo = styled.div`
@@ -49,4 +50,68 @@ export const WrapQuestionOrder = styled.div`
   background-color: ${props => (props['is-selected'] ? theme.bgColor.questionIsSelected : 'white')};
 `;
 
-export const Text = styled.p``;
+export const Text = styled.p`
+  user-select: none;
+`;
+
+// AnswerOption:
+export const WrapAnswerOption = styled.div`
+  z-index: 1;
+`;
+
+export const SpanAnswerOption = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+`;
+
+export const CheckBoxAnswerOption = styled.input`
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+
+  &:checked ~  ${SpanAnswerOption} {
+    background-color: ${theme.bgColor.green} !important;
+  }
+  &:checked ~ ${SpanAnswerOption}:after {
+    display: block;
+  }
+`;
+
+export const LabelAnswerOption = styled.label`
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: white;
+
+  &:hover ${CheckBoxAnswerOption} ~ ${SpanAnswerOption} {
+    background-color: #ccc;
+  }
+`;

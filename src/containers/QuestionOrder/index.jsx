@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import {
-  Grid,
-} from '@material-ui/core';
-import {
-  Link,
-} from 'react-router-dom';
 
 import theme from '@src/root/theme';
 
@@ -23,9 +17,7 @@ export default class QuestionOrder extends Component {
     let color = 'black';
     if (this.props.order < 33) color = theme.color.green;
     return (
-      <WrapQuestionOrder
-        onClick={() => console.log('haha')}
-      >
+      <WrapQuestionOrder>
         <p style={{ color }}>Câu hỏi số {this.props.order}</p>
       </WrapQuestionOrder>
     );
