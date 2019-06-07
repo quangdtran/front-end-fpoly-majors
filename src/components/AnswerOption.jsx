@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import {
   WrapAnswerOption,
-  CheckBoxAnswerOption,
   LabelAnswerOption,
   SpanAnswerOption,
+  RadioAnswerOption,
 } from './styled';
 
 class AnswerOption extends Component {
@@ -20,7 +20,7 @@ class AnswerOption extends Component {
       <WrapAnswerOption>
         <LabelAnswerOption>
           {answer}
-          <CheckBoxAnswerOption type="checkbox" />
+          <RadioAnswerOption type="radio" name="answer-option" value={answer} />
           <SpanAnswerOption />
         </LabelAnswerOption>
       </WrapAnswerOption>

@@ -40,7 +40,7 @@ const questionExample = {
       answer: 'Thích có cách riêng của mình',
     },
     {
-      id: 3,
+      id: 4,
       answer: 'Tạo cảm giác thân thiện với mọi người',
     },
   ],

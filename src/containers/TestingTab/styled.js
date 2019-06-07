@@ -156,5 +156,6 @@ export const NextBtn = styled.div`
   color: white;
   z-index: 1;
   cursor: pointer;
+  user-select: none;
   margin-right: 50px;
 `;

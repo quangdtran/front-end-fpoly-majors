@@ -66,6 +66,7 @@ export const SpanAnswerOption = styled.span`
   height: 25px;
   width: 25px;
   background-color: #eee;
+  border-radius: 50%;
 
   &:after {
     content: "";
@@ -83,7 +84,7 @@ export const SpanAnswerOption = styled.span`
   }
 `;
 
-export const CheckBoxAnswerOption = styled.input`
+export const RadioAnswerOption = styled.input`
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -110,8 +111,9 @@ export const LabelAnswerOption = styled.label`
   -ms-user-select: none;
   user-select: none;
   color: white;
+  border-radius: 50%;
 
-  &:hover ${CheckBoxAnswerOption} ~ ${SpanAnswerOption} {
+  &:hover ${RadioAnswerOption} ~ ${SpanAnswerOption} {
     background-color: #ccc;
   }
 `;
