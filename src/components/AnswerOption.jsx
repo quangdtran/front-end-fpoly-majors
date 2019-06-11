@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+
+import {
+  updateListAnswer,
+} from '@containers/TestingTab/action';
 
 import {
   WrapAnswerOption,
@@ -14,13 +19,32 @@ class AnswerOption extends Component {
     this.state = {};
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log('next props', nextProps);
+  }
+
   render() {
-    const { id, answer } = this.props.option;
+    const {
+      answer,
+      currentQuestion,
+      listAnswer,
+    } = this.props;
     return (
       <WrapAnswerOption>
         <LabelAnswerOption>
-          {answer}
-          <RadioAnswerOption type="radio" name="answer-option" value={answer} />
+          {answer.content}
+          <RadioAnswerOption
+            ref="radio-answer-option"
+            type="radio"
+            name="answer-option"
+            value={answer.id}
+            onChange={(evt) => {
+              listAnswer.set(currentQuestion.id, answer.id);
+              const radio = ReactDOM.findDOMNode(this.refs['radio-answer-option']);
+              radio.checked = true;
+            }}
+            checked={answer.id === 1 ? true : null}
+          />
           <SpanAnswerOption />
         </LabelAnswerOption>
       </WrapAnswerOption>
@@ -28,10 +52,14 @@ class AnswerOption extends Component {
   }
 }
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => {
+  return {
+    listAnswer: state.testingTab.listAnswer,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    updateListAnswer: listAnswer => dispatch(updateListAnswer(listAnswer)),
   };
 };
 

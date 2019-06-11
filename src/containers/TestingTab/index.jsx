@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-// import QuestionOrder from '@containers/QuestionOrder';
 import QuestionOrder from '@components/QuestionOrder';
 import AnswerOption from '@components/AnswerOption';
+
+import axios from 'axios';
+import configAPI from '@src/root/configAPI.json';
+
+import questions from '@src/assets/data/questions.json';
+
+import { getQuestionData } from './action';
 
 import {
   WrapTestingTab,
@@ -46,37 +53,59 @@ const questionExample = {
   ],
 };
 
-export default class TestingTab extends Component {
+const api = axios.create({
+  baseURL: configAPI.baseURL,
+  timeout: 1000,
+});
+
+class TestingTab extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
+  // LIFECYCLE:
+  componentDidMount() {
+    // api.get('/questions.json')
+    //   .then(res => this.props.getQuestionData(res.data))
+    //   .catch(err => console.log(err));
+    this.props.getQuestionData(questions.map((question, i) =>
+      ({ ...question, isDone: false, order: i + 1 })));
+  }
+
   // RENDER:
   renderListQuestion() {
-    const data = [];
-    for (let i = 0; i < 40; i++) {
-      data.push({
-        order: i + 1,
-        isDone: i < 33,
-      });
-    }
-    return data.map((el) => {
+    return this.props.listQuestion.map((question) => {
       return (
         <QuestionOrder
-          key={el.order}
-          question={el}
+          key={question.id}
+          question={question}
         />
       );
     });
   }
 
   renderListAnswerOption() {
-    return questionExample.answerOptions.map(option =>
-      <AnswerOption key={option.id} option={option} />);
+    const {
+      listQuestion,
+      orderQuestionIsSelected,
+    } = this.props;
+
+    const currentQuestion = listQuestion[orderQuestionIsSelected - 1];
+    if (currentQuestion) {
+      return currentQuestion.answers.map(answer =>
+        <AnswerOption key={answer.id} answer={answer} currentQuestion={currentQuestion} />);
+    }
+    return null;
   }
 
   render() {
+    const {
+      listQuestion,
+      orderQuestionIsSelected,
+    } = this.props;
+
+    const currentQuestion = listQuestion[orderQuestionIsSelected - 1];
     return (
       <WrapTestingTab>
         <WrapSideBar>
@@ -99,7 +128,9 @@ export default class TestingTab extends Component {
           <DetailQuestion>
             <BlackScreen />
             <WrapTextQuestion>
-              <TextQuestion>Câu hỏi: {questionExample.content}</TextQuestion>
+              <TextQuestion>
+                Câu hỏi: {currentQuestion ? currentQuestion.content : null}
+              </TextQuestion>
             </WrapTextQuestion>
             <WrapAnswerOption>
               {this.renderListAnswerOption()}
@@ -114,3 +145,18 @@ export default class TestingTab extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    listQuestion: state.testingTab.listQuestion,
+    orderQuestionIsSelected: state.testingTab.orderQuestionIsSelected,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getQuestionData: listQuestion => dispatch(getQuestionData(listQuestion)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TestingTab);
