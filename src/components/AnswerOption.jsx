@@ -20,7 +20,6 @@ class AnswerOption extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('next props', nextProps);
   }
 
   render() {
@@ -40,10 +39,9 @@ class AnswerOption extends Component {
             value={answer.id}
             onChange={(evt) => {
               listAnswer.set(currentQuestion.id, answer.id);
-              const radio = ReactDOM.findDOMNode(this.refs['radio-answer-option']);
-              radio.checked = true;
+              this.props.updateListAnswer(listAnswer);
             }}
-            checked={answer.id === 1 ? true : null}
+            defaultChecked={answer.id === listAnswer.get(currentQuestion.id) ? true : null}
           />
           <SpanAnswerOption />
         </LabelAnswerOption>

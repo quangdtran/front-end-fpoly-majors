@@ -117,3 +117,60 @@ export const LabelAnswerOption = styled.label`
     background-color: #ccc;
   }
 `;
+
+// TestResult:
+export const WrapTestResult = styled.div`
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+`;
+
+export const WrapSectorInfo = styled.div`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+`;
+
+// điền số phần trăm góc không phù hợp vào số góc đầu tiên để hiển thị
+export const WrapSectorCircle = styled.div`
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  background-image: linear-gradient(162deg, transparent 50%, ${theme.borderColor.orange} 50%), linear-gradient(90deg, ${theme.borderColor.orange} 50%, ${theme.bgColor.blueOverlay} 50%);
+`;
+
+export const SectorCircle = styled.div`
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: ${theme.color.blue};
+  font-size: 50px;
+`;
+
+export const WrapSectorContent = styled.div`
+  width: 600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.75px;
+`;
+
+export const TitleSectorContent = styled.h3`
+  color: red;
+  align-self: flex-start;
+`;
+
+export const WrapListMajorInfo = styled.div``;

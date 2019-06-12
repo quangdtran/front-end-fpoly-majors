@@ -9,7 +9,10 @@ import configAPI from '@src/root/configAPI.json';
 
 import questions from '@src/assets/data/questions.json';
 
-import { getQuestionData } from './action';
+import {
+  getQuestionData,
+  changeOrderQuestionIsSelected,
+} from './action';
 
 import {
   WrapTestingTab,
@@ -29,6 +32,8 @@ import {
   WrapPrevNextBtn,
   BackBtn,
   NextBtn,
+  ResultBtn,
+  CompletingBtn,
 } from './styled';
 
 const questionExample = {
@@ -73,6 +78,28 @@ class TestingTab extends Component {
       ({ ...question, isDone: false, order: i + 1 })));
   }
 
+  // METHODS:
+  getQuestionIsChecked() {
+    const {
+      listAnswer,
+    } = this.props;
+    let count = 0;
+    listAnswer.forEach((value, key, map) => {
+      if (value) count++;
+    });
+    return count;
+  }
+
+  getPercentProcessBar() {
+    const {
+      listAnswer,
+    } = this.props;
+    if (listAnswer && listAnswer.size !== 0) {
+      return (this.getQuestionIsChecked() / listAnswer.size) * 100;
+    }
+    return 0;
+  }
+
   // RENDER:
   renderListQuestion() {
     return this.props.listQuestion.map((question) => {
@@ -103,9 +130,11 @@ class TestingTab extends Component {
     const {
       listQuestion,
       orderQuestionIsSelected,
+      listAnswer,
     } = this.props;
 
     const currentQuestion = listQuestion[orderQuestionIsSelected - 1];
+
     return (
       <WrapTestingTab>
         <WrapSideBar>
@@ -115,14 +144,18 @@ class TestingTab extends Component {
           <WrapProcessBar>
             <WrapLeftProcessBar>
               <ProcessBar>
-                <ProcessBarCurrent />
+                <ProcessBarCurrent width={this.getPercentProcessBar()} />
               </ProcessBar>
               <WrapTextProcess>
-                <span>32/40</span>
+                <span>{this.getQuestionIsChecked()}/{listAnswer.size}</span>
               </WrapTextProcess>
             </WrapLeftProcessBar>
             <WrapRightProcessBar>
-              <span>completing...</span>
+              {
+                this.getPercentProcessBar() === 100
+                  ? <ResultBtn>Result</ResultBtn>
+                  : <CompletingBtn style={{ userSelect: 'none' }}>Completing...</CompletingBtn>
+              }
             </WrapRightProcessBar>
           </WrapProcessBar>
           <DetailQuestion>
@@ -136,8 +169,25 @@ class TestingTab extends Component {
               {this.renderListAnswerOption()}
             </WrapAnswerOption>
             <WrapPrevNextBtn>
-              <BackBtn>Back</BackBtn>
-              <NextBtn>Next</NextBtn>
+              <BackBtn
+                is-hide={orderQuestionIsSelected <= 1}
+                onClick={() => {
+                  if (orderQuestionIsSelected <= 1) return;
+                  this.props.changeOrderQuestionIsSelected(orderQuestionIsSelected - 1);
+                }}
+              >
+                Back
+              </BackBtn>
+              <NextBtn
+                is-hide={orderQuestionIsSelected >= listAnswer.size}
+                onClick={() => {
+                  if (orderQuestionIsSelected >= listAnswer.size) return;
+                  this.props.changeOrderQuestionIsSelected(orderQuestionIsSelected + 1);
+                }}
+              >
+                Next
+              </NextBtn>
+
             </WrapPrevNextBtn>
           </DetailQuestion>
         </WrapContent>
@@ -149,6 +199,7 @@ class TestingTab extends Component {
 const mapStateToProps = (state) => {
   return {
     listQuestion: state.testingTab.listQuestion,
+    listAnswer: state.testingTab.listAnswer,
     orderQuestionIsSelected: state.testingTab.orderQuestionIsSelected,
   };
 };
@@ -156,6 +207,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getQuestionData: listQuestion => dispatch(getQuestionData(listQuestion)),
+    changeOrderQuestionIsSelected: order => dispatch(changeOrderQuestionIsSelected(order)),
   };
 };
 

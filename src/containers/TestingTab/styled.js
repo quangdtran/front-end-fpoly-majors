@@ -66,7 +66,7 @@ export const ProcessBar = styled.div`
 export const ProcessBarCurrent = styled.div`
   position: absolute;
   height: 100%;
-  width: 80%;
+  width: ${props => props.width}%;
   top: 0%;
   left: 0;
   background-color: ${theme.bgColor.green};
@@ -74,6 +74,7 @@ export const ProcessBarCurrent = styled.div`
 `;
 
 export const WrapTextProcess = styled.div`
+  user-select: none;
   width: 10%;
   height: 100%;
   display: flex;
@@ -117,6 +118,7 @@ export const WrapTextQuestion = styled.div`
 export const TextQuestion = styled.p`
   color: white;
   font-size: 2em;
+  user-select: none;
   z-index: 1;
 `;
 export const WrapAnswerOption = styled.div`
@@ -139,23 +141,75 @@ export const WrapPrevNextBtn = styled.div`
 `;
 
 export const BackBtn = styled.div`
-  background-color: ${theme.bgColor.blue};
+  opacity: ${props => (props['is-hide'] ? 0 : 1)};
+  cursor: ${props => (props['is-hide'] ? 'unset' : 'pointer')};
+  background-image: ${theme.bgImage.blueBtn};
   display: inline-block;
   padding: 15px 35px;
   color: white;
   z-index: 1;
-  cursor: pointer;
   user-select: none;
   margin-right: 50px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+
+  &:active {
+    background-image: ${theme.bgImage.blueActiveBtn};
+  }
 `;
 
 export const NextBtn = styled.div`
-  background-color: ${theme.bgColor.green};
+  opacity: ${props => (props['is-hide'] ? 0 : 1)};
+  cursor: ${props => (props['is-hide'] ? 'unset' : 'pointer')};
+  background-image: ${theme.bgImage.greenBtn};
   display: inline-block;
   padding: 15px 35px;
   color: white;
   z-index: 1;
-  cursor: pointer;
   user-select: none;
   margin-right: 50px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+
+  &:active {
+    background-image: ${theme.bgImage.greenActiveBtn};
+  }
+`;
+
+export const ResultBtn = styled.div`
+  cursor: pointer;
+  background-image: ${theme.bgImage.greenBtn};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  color: white;
+  z-index: 1;
+  user-select: none;
+  height: 70%;
+  width: 90%;
+  margin-right: 10%;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+
+  &:active {
+    background-image: ${theme.bgImage.greenActiveBtn};
+  }
+`;
+
+export const CompletingBtn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  color: white;
+  z-index: 1;
+  user-select: none;
+  height: 70%;
+  width: 90%;
+  margin-right: 10%;
+  font-size: 15px;
+  border: 1px solid white;
+  cursor: not-allowed;
+  letter-spacing: 0.5px;
 `;

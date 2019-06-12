@@ -20,18 +20,18 @@ export const OverlayImageCourse = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  background-color: ${theme.bgColor.blue};
+  background-color: ${theme.bgColor.blueOverlay};
   opacity: 0;
   transition: 0.4s;
+  cursor: pointer;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  z-index: 0;
 
   &:hover{
-    opacity: 0.5;
+    opacity: 1;
   }
 `;
 
@@ -50,6 +50,7 @@ export const TextLine = styled.div`
   height: 2px;
   width: 40%;
   background-color: white;
+  z-index: 1;
 `;
 
 export const WrapImageCourse = styled.div`

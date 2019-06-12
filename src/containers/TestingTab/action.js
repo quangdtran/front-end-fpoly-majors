@@ -1,7 +1,7 @@
 import {
   CHANGE_QUESTION_IS_SELECTED,
   GET_QUESTION_DATA,
-  UPDATE_QUESTION_IS_CHECKED,
+  UPDATE_LIST_ANSWER,
 } from './constants';
 
 export const changeOrderQuestionIsSelected = order => ({
@@ -29,7 +29,7 @@ export const getQuestionData = (listQuestion) => {
 
 export const updateListAnswer = (listAnswer) => {
   return ({
-    type: UPDATE_QUESTION_IS_CHECKED,
+    type: UPDATE_LIST_ANSWER,
     payload: {
       listAnswer,
     },

@@ -8,6 +8,7 @@ import {
 import { createBrowserHistory } from 'history';
 
 import Header from '@components/Header';
+import TestResult from '@components/TestResult';
 import TestingTab from '@src/containers/TestingTab';
 import CourseTab from '@containers/CourseTab';
 import SchoolViewTab from '@containers/SchoolViewTab';
@@ -36,11 +37,12 @@ export default class index extends Component {
           </WrapHeaderApp>
           <WrapBodyApp>
             <Switch style={{ height: '100%' }}>
-              <Route path="/" exact component={TestingTab} />
+              <Route path="/" exact component={TestResult} />
               <Route path="/test" component={TestingTab} />
               <Route path="/share" component={SharedArticleTab} />
               <Route path="/learn" component={CourseTab} />
               <Route path="/view" component={SchoolViewTab} />
+              <Route path="/test-result" component={TestResult} />
             </Switch>
           </WrapBodyApp>
         </Router>

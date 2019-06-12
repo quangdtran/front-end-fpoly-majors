@@ -28,17 +28,26 @@ export default class CourseTab extends Component {
             <ImageCourse src="http://localhost:8080/images/TKDH.png" />
           </WrapImageCourse>
           <WrapImageCourse>
-            <OverlayImageCourse />
+            <OverlayImageCourse>
+              <TextLearning>HỌC THỬ NGAY</TextLearning>
+              <TextLine />
+            </OverlayImageCourse>
             <ImageCourse src="http://localhost:8080/images/LTDĐ.png" />
           </WrapImageCourse>
         </WrapRowCourse>
         <WrapRowCourse>
           <WrapImageCourse>
-            <OverlayImageCourse />
+            <OverlayImageCourse>
+              <TextLearning>HỌC THỬ NGAY</TextLearning>
+              <TextLine />
+            </OverlayImageCourse>
             <ImageCourse src="http://localhost:8080/images/TKW.png" />
           </WrapImageCourse>
           <WrapImageCourse>
-            <OverlayImageCourse />
+            <OverlayImageCourse>
+              <TextLearning>HỌC THỬ NGAY</TextLearning>
+              <TextLine />
+            </OverlayImageCourse>
             <ImageCourse src="http://localhost:8080/images/UDPM.png" />
           </WrapImageCourse>
         </WrapRowCourse>
