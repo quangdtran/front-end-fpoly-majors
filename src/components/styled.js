@@ -121,8 +121,11 @@ export const LabelAnswerOption = styled.label`
 // TestResult:
 export const WrapTestResult = styled.div`
   width: 100%;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+  position: relative;
+  letter-spacing: 0.75px;
 `;
 
 export const WrapSectorInfo = styled.div`
@@ -131,7 +134,7 @@ export const WrapSectorInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 0;
+  margin: 30px 0;
 `;
 
 // điền số phần trăm góc không phù hợp vào số góc đầu tiên để hiển thị
@@ -143,7 +146,7 @@ export const WrapSectorCircle = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 20px;
-  background-image: linear-gradient(162deg, transparent 50%, ${theme.borderColor.orange} 50%), linear-gradient(90deg, ${theme.borderColor.orange} 50%, ${theme.bgColor.blueOverlay} 50%);
+  background-image: linear-gradient(${props => props.percent}deg, transparent 50%, ${theme.borderColor.orange} 50%), linear-gradient(90deg, ${theme.borderColor.orange} 50%, ${theme.bgColor.blueOverlay} 50%);
 `;
 
 export const SectorCircle = styled.div`
@@ -173,4 +176,59 @@ export const TitleSectorContent = styled.h3`
   align-self: flex-start;
 `;
 
-export const WrapListMajorInfo = styled.div``;
+export const WrapListMajorInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+export const WrapMajorInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const TitleMajorContent = styled.h3`
+  color: blue;
+  font-size: 17px;
+  width: 100%;
+  text-align: center;
+`;
+
+export const WrapMajorContent = styled.div`
+  width: 100%;
+`;
+
+export const MajorContent = styled.div`
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+`;
+
+export const WrapMajorCircle = styled.div`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-image: linear-gradient(${props => props.percent}deg, transparent 50%, ${theme.borderColor.orange} 50%), linear-gradient(90deg, ${theme.borderColor.orange} 50%, ${theme.bgColor.blueOverlay} 50%);
+`;
+
+export const MajorCircle = styled.div`
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: ${theme.color.blue};
+  font-size: 40px;
+`;
