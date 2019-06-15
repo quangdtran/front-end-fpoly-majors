@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Redirect } from 'react-router-dom';
+
 import QuestionOrder from '@components/QuestionOrder';
 import AnswerOption from '@components/AnswerOption';
 
@@ -66,7 +68,9 @@ const api = axios.create({
 class TestingTab extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      redirect: true,
+    };
   }
 
   // LIFECYCLE:
@@ -127,6 +131,7 @@ class TestingTab extends Component {
   }
 
   render() {
+    if (this.state.redirect) return <Redirect to="/test-result" />;
     const {
       listQuestion,
       orderQuestionIsSelected,

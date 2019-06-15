@@ -4,6 +4,8 @@ import theme from '@src/root/theme';
 export const WrapSharedArticleTab = styled.div`
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 export const WrapRowCourse = styled.div`

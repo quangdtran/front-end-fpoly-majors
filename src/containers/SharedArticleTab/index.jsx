@@ -15,14 +15,16 @@ export default class SharedArticleTab extends Component {
   render() {
     return (
       <WrapSharedArticleTab>
-        <WrapRowCourse>
-          <ImageCourse src="http://localhost:8080/images/TKDH.png" />
-          <ImageCourse src="http://localhost:8080/images/LTDĐ.png" />
-        </WrapRowCourse>
-        <WrapRowCourse>
-          <ImageCourse src="http://localhost:8080/images/TKW.png" />
-          <ImageCourse src="http://localhost:8080/images/UDPM.png" />
-        </WrapRowCourse>
+        <iframe
+          style={{
+            width: '100%',
+            height: '2000%',
+            border: 'none',
+          }}
+          title="test"
+          scrolling="no"
+          src="http://localhost:3003/"
+        />
       </WrapSharedArticleTab>
     );
   }

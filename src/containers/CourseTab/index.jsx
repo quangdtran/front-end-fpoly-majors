@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import {
   WrapSharedArticleTab,
   WrapRowCourse,
@@ -19,13 +21,15 @@ export default class CourseTab extends Component {
   render() {
     return (
       <WrapSharedArticleTab>
-        <WrapRowCourse>
+        <WrapRowCourse style={{ alignItems: 'flex-start', paddingBottom: 25 }}>
           <WrapImageCourse>
-            <OverlayImageCourse>
-              <TextLearning>HỌC THỬ NGAY</TextLearning>
-              <TextLine />
-            </OverlayImageCourse>
-            <ImageCourse src="http://localhost:8080/images/TKDH.png" />
+            <Link to="/learn/UDPM">
+              <OverlayImageCourse>
+                <TextLearning>HỌC THỬ NGAY</TextLearning>
+                <TextLine />
+              </OverlayImageCourse>
+              <ImageCourse src="http://localhost:8080/images/TKDH.png" />
+            </Link>
           </WrapImageCourse>
           <WrapImageCourse>
             <OverlayImageCourse>
@@ -35,7 +39,7 @@ export default class CourseTab extends Component {
             <ImageCourse src="http://localhost:8080/images/LTDĐ.png" />
           </WrapImageCourse>
         </WrapRowCourse>
-        <WrapRowCourse>
+        <WrapRowCourse style={{ alignItems: 'flex-end' }}>
           <WrapImageCourse>
             <OverlayImageCourse>
               <TextLearning>HỌC THỬ NGAY</TextLearning>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Grid,
 } from '@material-ui/core';
@@ -16,53 +17,60 @@ import {
   HeaderLogo,
 } from './styled';
 
-const Header = () => {
-  return (
-    <WrapHeader>
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-      <WrapHeaderLogo>
-        <Link to="/">
-          <HeaderLogo src="http://localhost:8080/images/logo.png" alt="" />
-        </Link>
-      </WrapHeaderLogo>
+  render() {
+    return (
+      <WrapHeader>
 
-      <WrapHeaderMenu container>
-        <Grid item xs={3}>
-          <HeaderLink
-            to="/test"
-            activeStyle={{ color: theme.color.orange }}
-          >
-            BÀI KIỂM TRA
-          </HeaderLink>
-        </Grid>
-        <Grid item xs={3}>
-          <HeaderLink
-            to="/share"
-            activeStyle={{ color: theme.color.orange }}
-          >
-            CHIA SẺ
-          </HeaderLink>
-        </Grid>
-        <Grid item xs={3}>
-          <HeaderLink
-            to="/learn"
-            activeStyle={{ color: theme.color.orange }}
-          >
-            HỌC THỬ
-          </HeaderLink>
-        </Grid>
-        <Grid item xs={3}>
-          <HeaderLink
-            to="/view"
-            activeStyle={{ color: theme.color.orange }}
-          >
-            THAM QUAN TRƯỜNG
-          </HeaderLink>
-        </Grid>
-      </WrapHeaderMenu>
+        <WrapHeaderLogo>
+          <Link to="/">
+            <HeaderLogo src="http://localhost:8080/images/logo.png" alt="" />
+          </Link>
+        </WrapHeaderLogo>
 
-    </WrapHeader>
-  );
-};
+        <WrapHeaderMenu container>
+          <Grid item xs={3}>
+            <HeaderLink
+              to="/test"
+              activeStyle={{ color: theme.color.orange }}
+            >
+              BÀI KIỂM TRA
+            </HeaderLink>
+          </Grid>
+          <Grid item xs={3}>
+            <HeaderLink
+              to="/share"
+              activeStyle={{ color: theme.color.orange }}
+            >
+              CHIA SẺ
+            </HeaderLink>
+          </Grid>
+          <Grid item xs={3}>
+            <HeaderLink
+              to="/learn"
+              activeStyle={{ color: theme.color.orange }}
+            >
+              HỌC THỬ
+            </HeaderLink>
+          </Grid>
+          <Grid item xs={3}>
+            <HeaderLink
+              to="/view"
+              activeStyle={{ color: theme.color.orange }}
+            >
+              THAM QUAN TRƯỜNG
+            </HeaderLink>
+          </Grid>
+        </WrapHeaderMenu>
+
+      </WrapHeader>
+    );
+  }
+}
 
 export default Header;
