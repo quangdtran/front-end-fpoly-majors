@@ -194,7 +194,7 @@ export const WrapMajorInfo = styled.div`
 `;
 
 export const TitleMajorContent = styled.h3`
-  color: blue;
+  color: ${theme.color.blue};
   font-size: 17px;
   width: 100%;
   text-align: center;

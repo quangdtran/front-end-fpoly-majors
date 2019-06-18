@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import theme from '@src/root/theme';
 
+import { NavLink } from 'react-router-dom';
+
 export const WrapTestingTab = styled.div`
   display: flex;
   flex-direction: row;
@@ -195,6 +197,16 @@ export const ResultBtn = styled.div`
   &:active {
     background-image: ${theme.bgImage.greenActiveBtn};
   }
+`;
+
+export const ResultLink = styled(NavLink)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
 `;
 
 export const CompletingBtn = styled.div`

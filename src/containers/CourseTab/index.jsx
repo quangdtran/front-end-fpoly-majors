@@ -23,7 +23,7 @@ export default class CourseTab extends Component {
       <WrapSharedArticleTab>
         <WrapRowCourse style={{ alignItems: 'flex-start', paddingBottom: 25 }}>
           <WrapImageCourse>
-            <Link to="/learn/UDPM">
+            <Link to="/learn/TKDH">
               <OverlayImageCourse>
                 <TextLearning>HỌC THỬ NGAY</TextLearning>
                 <TextLine />
@@ -32,27 +32,33 @@ export default class CourseTab extends Component {
             </Link>
           </WrapImageCourse>
           <WrapImageCourse>
-            <OverlayImageCourse>
-              <TextLearning>HỌC THỬ NGAY</TextLearning>
-              <TextLine />
-            </OverlayImageCourse>
-            <ImageCourse src="http://localhost:8080/images/LTDĐ.png" />
+            <Link to="/learn/LTDD">
+              <OverlayImageCourse>
+                <TextLearning>HỌC THỬ NGAY</TextLearning>
+                <TextLine />
+              </OverlayImageCourse>
+              <ImageCourse src="http://localhost:8080/images/LTDĐ.png" />
+            </Link>
           </WrapImageCourse>
         </WrapRowCourse>
         <WrapRowCourse style={{ alignItems: 'flex-end' }}>
           <WrapImageCourse>
-            <OverlayImageCourse>
-              <TextLearning>HỌC THỬ NGAY</TextLearning>
-              <TextLine />
-            </OverlayImageCourse>
-            <ImageCourse src="http://localhost:8080/images/TKW.png" />
+            <Link to="/learn/TKW">
+              <OverlayImageCourse>
+                <TextLearning>HỌC THỬ NGAY</TextLearning>
+                <TextLine />
+              </OverlayImageCourse>
+              <ImageCourse src="http://localhost:8080/images/TKW.png" />
+            </Link>
           </WrapImageCourse>
           <WrapImageCourse>
-            <OverlayImageCourse>
-              <TextLearning>HỌC THỬ NGAY</TextLearning>
-              <TextLine />
-            </OverlayImageCourse>
-            <ImageCourse src="http://localhost:8080/images/UDPM.png" />
+            <Link to="/learn/UDPM">
+              <OverlayImageCourse>
+                <TextLearning>HỌC THỬ NGAY</TextLearning>
+                <TextLine />
+              </OverlayImageCourse>
+              <ImageCourse src="http://localhost:8080/images/UDPM.png" />
+            </Link>
           </WrapImageCourse>
         </WrapRowCourse>
       </WrapSharedArticleTab>

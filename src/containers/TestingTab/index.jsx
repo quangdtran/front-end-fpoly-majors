@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 
 import QuestionOrder from '@components/QuestionOrder';
 import AnswerOption from '@components/AnswerOption';
@@ -36,6 +36,7 @@ import {
   NextBtn,
   ResultBtn,
   CompletingBtn,
+  ResultLink,
 } from './styled';
 
 const questionExample = {
@@ -75,9 +76,6 @@ class TestingTab extends Component {
 
   // LIFECYCLE:
   componentDidMount() {
-    // api.get('/questions.json')
-    //   .then(res => this.props.getQuestionData(res.data))
-    //   .catch(err => console.log(err));
     this.props.getQuestionData(questions.map((question, i) =>
       ({ ...question, isDone: false, order: i + 1 })));
   }
@@ -131,7 +129,7 @@ class TestingTab extends Component {
   }
 
   render() {
-    if (this.state.redirect) return <Redirect to="/test-result" />;
+    // if (this.state.redirect) return <Redirect to="/test/result" />;
     const {
       listQuestion,
       orderQuestionIsSelected,
@@ -157,8 +155,8 @@ class TestingTab extends Component {
             </WrapLeftProcessBar>
             <WrapRightProcessBar>
               {
-                this.getPercentProcessBar() === 100
-                  ? <ResultBtn>Result</ResultBtn>
+                this.getPercentProcessBar() >= 0
+                  ? <ResultBtn><ResultLink to="/test/result">Result</ResultLink></ResultBtn>
                   : <CompletingBtn style={{ userSelect: 'none' }}>Completing...</CompletingBtn>
               }
             </WrapRightProcessBar>
