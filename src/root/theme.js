@@ -6,6 +6,7 @@ export default {
     questionIsSelected: 'rgba(39, 47, 84, 0.9)',
     processBar: '#dcdcdc',
     blueOverlay: 'rgba(39, 47, 84, 0.5)',
+    sideBar: '#EEEEEE',
   },
   color: {
     red: '#ee3c45',

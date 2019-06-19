@@ -145,7 +145,7 @@ export const WrapPrevNextBtn = styled.div`
 export const BackBtn = styled.div`
   opacity: ${props => (props['is-hide'] ? 0 : 1)};
   cursor: ${props => (props['is-hide'] ? 'unset' : 'pointer')};
-  background-image: ${theme.bgImage.blueBtn};
+  background-color: ${theme.bgColor.blue};
   display: inline-block;
   padding: 15px 35px;
   color: white;
@@ -163,7 +163,7 @@ export const BackBtn = styled.div`
 export const NextBtn = styled.div`
   opacity: ${props => (props['is-hide'] ? 0 : 1)};
   cursor: ${props => (props['is-hide'] ? 'unset' : 'pointer')};
-  background-image: ${theme.bgImage.greenBtn};
+  background-color: ${theme.bgColor.green};
   display: inline-block;
   padding: 15px 35px;
   color: white;
@@ -180,7 +180,7 @@ export const NextBtn = styled.div`
 
 export const ResultBtn = styled.div`
   cursor: pointer;
-  background-image: ${theme.bgImage.greenBtn};
+  background-color: ${theme.bgColor.green};
   display: flex;
   align-items: center;
   justify-content: center;

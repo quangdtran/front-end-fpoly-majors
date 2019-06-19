@@ -38,7 +38,7 @@ export default class index extends Component {
           </WrapHeaderApp>
           <WrapBodyApp>
             <Switch style={{ height: '100%' }}>
-              <Route path="/" exact component={CourseTab} />
+              <Route path="/" exact component={DetailCourseTab} />
               <Route path="/test" exact component={TestingTab} />
               <Route path="/share" component={SharedArticleTab} />
               <Route path="/learn" exact component={CourseTab} />

@@ -58,6 +58,7 @@ export const WrapSideBar = styled.div`
   position: relative;
   overflow-y: auto;
   padding: 20px 20px;
+  background-color: ${theme.bgColor.sideBar};
 `;
 
 export const WrapBody = styled.div`
