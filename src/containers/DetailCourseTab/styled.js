@@ -89,7 +89,7 @@ export const WrapPathLink = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 2em;
+  padding-left: 25px;
 `;
 
 export const WrapBtnDirect = styled.div`
@@ -97,7 +97,8 @@ export const WrapBtnDirect = styled.div`
   width: 40%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: 25px; 
 `;
 
 export const ChangeLessonBtn = styled.div`
