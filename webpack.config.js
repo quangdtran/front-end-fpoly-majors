@@ -20,6 +20,7 @@ const VENDER_LIBS = [
   'reselect',
   'styled-components',
   'prop-types',
+  'react-circular-progressbar',
 ];
 
 module.exports = {
@@ -44,6 +45,10 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: ['/node_modules/', '/dist/'],
       },
+      {
+        use: ['style-loader', 'css-loader'],
+        test: /\.css$/i,
+      },
     ],
   },
   resolve: {
@@ -53,7 +58,7 @@ module.exports = {
       '@src': path.resolve(__dirname, './src'),
       '@components': path.resolve(__dirname, './src/components'),
       '@containers': path.resolve(__dirname, './src/containers'),
-      '@global': path.resolve(__dirname, '.src/global'),
+      '@utils': path.resolve(__dirname, './src/utils'),
     },
   },
   optimization: {

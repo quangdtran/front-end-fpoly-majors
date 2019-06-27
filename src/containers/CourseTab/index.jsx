@@ -28,7 +28,7 @@ export default class CourseTab extends Component {
                 <TextLearning>HỌC THỬ NGAY</TextLearning>
                 <TextLine />
               </OverlayImageCourse>
-              <ImageCourse src="http://localhost:8080/images/TKDH.png" />
+              <ImageCourse src="https://dght003-7228c.firebaseapp.com/images/TKDH.png" />
             </Link>
           </WrapImageCourse>
           <WrapImageCourse>
@@ -37,7 +37,7 @@ export default class CourseTab extends Component {
                 <TextLearning>HỌC THỬ NGAY</TextLearning>
                 <TextLine />
               </OverlayImageCourse>
-              <ImageCourse src="http://localhost:8080/images/LTDĐ.png" />
+              <ImageCourse src="https://dght003-7228c.firebaseapp.com/images/LTDĐ.png" />
             </Link>
           </WrapImageCourse>
         </WrapRowCourse>
@@ -48,7 +48,7 @@ export default class CourseTab extends Component {
                 <TextLearning>HỌC THỬ NGAY</TextLearning>
                 <TextLine />
               </OverlayImageCourse>
-              <ImageCourse src="http://localhost:8080/images/TKW.png" />
+              <ImageCourse src="https://dght003-7228c.firebaseapp.com/images/TKW.png" />
             </Link>
           </WrapImageCourse>
           <WrapImageCourse>
@@ -57,7 +57,7 @@ export default class CourseTab extends Component {
                 <TextLearning>HỌC THỬ NGAY</TextLearning>
                 <TextLine />
               </OverlayImageCourse>
-              <ImageCourse src="http://localhost:8080/images/UDPM.png" />
+              <ImageCourse src="https://dght003-7228c.firebaseapp.com/images/UDPM.png" />
             </Link>
           </WrapImageCourse>
         </WrapRowCourse>

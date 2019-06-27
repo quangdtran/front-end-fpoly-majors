@@ -29,7 +29,7 @@ class Header extends Component {
 
         <WrapHeaderLogo>
           <Link to="/">
-            <HeaderLogo src="http://localhost:8080/images/logo.png" alt="" />
+            <HeaderLogo src="https://dght003-7228c.firebaseapp.com/images/logo.png" alt="" />
           </Link>
         </WrapHeaderLogo>
 

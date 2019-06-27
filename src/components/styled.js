@@ -123,7 +123,7 @@ export const WrapTestResult = styled.div`
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: relative;
   letter-spacing: 0.75px;
 `;
@@ -146,7 +146,6 @@ export const WrapSectorCircle = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 20px;
-  background-image: linear-gradient(${props => props.percent}deg, transparent 50%, ${theme.borderColor.orange} 50%), linear-gradient(90deg, ${theme.borderColor.orange} 50%, ${theme.bgColor.blueOverlay} 50%);
 `;
 
 export const SectorCircle = styled.div`
@@ -178,9 +177,9 @@ export const TitleSectorContent = styled.h3`
 
 export const WrapListMajorInfo = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  width: 80%;
+  width: 90%;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -191,6 +190,8 @@ export const WrapMajorInfo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 25%;
+  padding: 15px;
 `;
 
 export const TitleMajorContent = styled.h3`
@@ -207,7 +208,6 @@ export const WrapMajorContent = styled.div`
 export const MajorContent = styled.div`
   width: 100%;
   text-align: center;
-  padding: 15px;
 `;
 
 export const WrapMajorCircle = styled.div`
@@ -218,7 +218,6 @@ export const WrapMajorCircle = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  background-image: linear-gradient(${props => props.percent}deg, transparent 50%, ${theme.borderColor.orange} 50%), linear-gradient(90deg, ${theme.borderColor.orange} 50%, ${theme.bgColor.blueOverlay} 50%);
 `;
 
 export const MajorCircle = styled.div`
@@ -231,4 +230,67 @@ export const MajorCircle = styled.div`
   background-color: white;
   color: ${theme.color.blue};
   font-size: 40px;
+`;
+
+// FormUserInfo:
+export const WrapFormUserInfo = styled.div`
+  background-image: url(https://dght003-7228c.firebaseapp.com/images/bg-form-user-info.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+`;
+
+export const WrapTitle = styled.div`
+  width: 100%;
+`;
+
+export const WrapForm = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 20px;
+  width: 50%;
+`;
+
+export const InputFormUserInfo = styled.input`
+  width: 100%;
+  height: 35px;
+  margin-top: 5px;
+  border: none;
+  font-size: 17px;
+  padding: 0 10px;
+`;
+
+export const LabelFormUserInfo = styled.label`
+  margin:0 0;
+`;
+
+export const FormUser = styled.form`
+  padding: 20px;
+  background-color: ${theme.bgColor.orange};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+export const StartBtn = styled.div`
+  background-color: ${theme.bgColor.blue};
+  display: inline-block;
+  padding: 15px 35px;
+  color: white;
+  z-index: 1;
+  user-select: none;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  text-align: center;
+  align-self: center;
+  margin-top: 20px;
+
+  &:active {
+    background-image: ${theme.bgImage.blueActiveBtn};
+  }
 `;

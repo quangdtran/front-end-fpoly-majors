@@ -91,15 +91,18 @@ export const WrapMajorContent = styled.div`
   word-wrap: break-word;
   padding: 0 30px;
   letter-spacing: 0.7px;
+  width: 100%;
 `;
 
 export const MajorContent = styled.p`
-  text-indent: 30px;
+  /* text-indent: 30px; */
   letter-spacing: 0.75px;
+  width: 100%;
 `;
 
 export const WrapSection = styled.div`
   margin: 20px 0;
+  width: 100%;
 `;
 
 export const WrapSectionContent = styled.div`
@@ -115,6 +118,6 @@ export const SectionTitle = styled.h5`
 `;
 
 export const SectionContent = styled.p`
-  text-indent: 30px;
+  /* text-indent: 30px; */
   letter-spacing: 0.75px;
 `;

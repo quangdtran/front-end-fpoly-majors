@@ -9,13 +9,13 @@ import NavigateBackIcon from '@material-ui/icons/NavigateBefore';
 
 import LessonOrder from '@components/LessonOrder';
 
+import { getCourseById } from '@utils/api';
+
 import theme from '@src/root/theme';
 
 import {
   WrapSideBar,
   WrapDetailCourseTab,
-  WrapBackListCourseBtn,
-  WrapOptionSideBar,
   WrapBody,
   LessonIframe,
   TextLessonOrder,
@@ -26,6 +26,8 @@ import {
   WrapBtnDirect,
   WrapPathLink,
   ChangeLessonBtn,
+  SideBar,
+  HeaderSideBar,
 } from './styled';
 
 const courseName = {
@@ -39,23 +41,33 @@ const courses = {
   UDPM: [
     {
       id: 1,
-      url: 'http://localhost:8080/frames/courses/UDPM/bai1.html',
+      link: 'https://dght003-7228c.firebaseapp.com/frames/courses/UDPM/bai1.html',
+      orderNumber: 1,
+      name: 'Giới thiệu và cài đặt',
     },
     {
       id: 2,
-      url: 'http://localhost:8080/frames/courses/UDPM/bai2.html',
+      link: 'https://dght003-7228c.firebaseapp.com/frames/courses/UDPM/bai2.html',
+      orderNumber: 2,
+      name: 'Chương trình đầu tiên',
     },
     {
       id: 3,
-      url: 'http://localhost:8080/frames/courses/UDPM/bai3.html',
+      link: 'https://dght003-7228c.firebaseapp.com/frames/courses/UDPM/bai3.html',
+      orderNumber: 3,
+      name: 'Biến và kiểu dữ liệu',
     },
     {
       id: 4,
-      url: 'http://localhost:8080/frames/courses/UDPM/bai4.html',
+      link: 'https://dght003-7228c.firebaseapp.com/frames/courses/UDPM/bai4.html',
+      orderNumber: 4,
+      name: 'Toán tử, vòng lặp, rẽ nhánh',
     },
     {
       id: 5,
-      url: 'http://localhost:8080/frames/courses/UDPM/bai5.html',
+      link: 'https://dght003-7228c.firebaseapp.com/frames/courses/UDPM/bai5.html',
+      orderNumber: 5,
+      name: 'Chưa cập nhật',
     },
   ],
   TKW: [
@@ -130,7 +142,56 @@ const courses = {
       url: 'https://www.youtube.com/embed/AO9Bkeh3VFM',
     },
   ],
-  LTDD: [],
+  LTDD: [
+    {
+      id: 1,
+      url: 'https://www.youtube.com/embed/rcH4NbngPEk',
+    },
+    {
+      id: 2,
+      url: 'https://www.youtube.com/embed/80ayldnOsSI',
+    },
+    {
+      id: 3,
+      url: 'https://www.youtube.com/embed/QQk0PhOxMV4',
+    },
+    {
+      id: 4,
+      url: 'https://www.youtube.com/embed/v2WKdvG2TUA',
+    },
+    {
+      id: 5,
+      url: 'https://www.youtube.com/embed/2TPjqGpgPvM',
+    },
+    {
+      id: 6,
+      url: 'https://www.youtube.com/embed/Y6Yw3wlQIQw',
+    },
+    {
+      id: 7,
+      url: 'https://www.youtube.com/embed/Jk18f4_L0Ac',
+    },
+    {
+      id: 8,
+      url: 'https://www.youtube.com/embed/hLDurLNyMB0',
+    },
+    {
+      id: 9,
+      url: 'https://www.youtube.com/embed/5KpN6fxOLWo',
+    },
+    {
+      id: 10,
+      url: 'https://www.youtube.com/embed/RCXYMkGB57Q',
+    },
+    {
+      id: 11,
+      url: 'https://www.youtube.com/embed/fuxs7z0i0-M',
+    },
+    {
+      id: 12,
+      url: 'https://www.youtube.com/embed/HA-6iXtzkkY',
+    },
+  ],
 };
 
 class DetailCourseTab extends Component {
@@ -146,23 +207,36 @@ class DetailCourseTab extends Component {
   // LIFECYCLE:
   componentDidMount() {
     const courseId = this.props.match.params.id;
-    this.setState({
-      listLesson: courses[courseId] || [],
-      lessonIsSelected: courses[courseId][0] || {},
-    });
+    if (courseId === 'UDPM') {
+      this.setState({
+        listLesson: courses[courseId],
+        lessonIsSelected: courses[courseId][0],
+      });
+      return;
+    }
+    getCourseById(courseId)
+      .then((res) => {
+        if (res.data) {
+          this.setState({
+            listLesson: res.data,
+            lessonIsSelected: res.data[0],
+          });
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   // METHODS:
   renderListCourseOrder() {
     const { listLesson } = this.state;
-    return listLesson.map((lesson, index) => {
+    return listLesson.map((lesson) => {
       return (
         <WrapLessonOrder
           key={lesson.id}
           is-selected={lesson.id === this.state.lessonIsSelected.id}
           onClick={() => this.setState({ lessonIsSelected: lesson })}
         >
-          <TextLessonOrder>Bài số {index + 1}</TextLessonOrder>
+          <TextLessonOrder>Bài {lesson.orderNumber}: {lesson.name}</TextLessonOrder>
         </WrapLessonOrder>
       );
     });
@@ -171,18 +245,16 @@ class DetailCourseTab extends Component {
   render() {
     const { lessonIsSelected, listLesson } = this.state;
     const { id } = this.props.match.params;
+    if (!lessonIsSelected) return <h3>Có lỗi xảy ra vui lòng thử lại sau.</h3>;
     return (
       <WrapDetailCourseTab>
         <WrapSideBar>
-          {/* <WrapOptionSideBar>
-            <Link to="/learn" style={{ textDecoration: 'none' }}>
-              <WrapBackListCourseBtn>
-                <ArrowBackIcon style={{ marginRight: 20, marginLeft: 20 }} />
-                Trở về khóa học
-              </WrapBackListCourseBtn>
-            </Link>
-          </WrapOptionSideBar> */}
-          {this.renderListCourseOrder()}
+          <HeaderSideBar>
+            <p>Danh sách bài học</p>
+          </HeaderSideBar>
+          <SideBar>
+            {this.renderListCourseOrder()}
+          </SideBar>
         </WrapSideBar>
         <WrapBody>
           <WrapPathTree>
@@ -192,8 +264,10 @@ class DetailCourseTab extends Component {
             <WrapBtnDirect>
               <ChangeLessonBtn
                 onClick={() => {
-                  if (lessonIsSelected.id > 1) {
-                    this.setState({ lessonIsSelected: listLesson[lessonIsSelected.id - 2] });
+                  if (lessonIsSelected.orderNumber > 1) {
+                    this.setState({
+                      lessonIsSelected: listLesson[lessonIsSelected.orderNumber - 2],
+                    });
                   }
                 }}
               >
@@ -203,8 +277,10 @@ class DetailCourseTab extends Component {
               </ChangeLessonBtn>
               <ChangeLessonBtn
                 onClick={() => {
-                  if (lessonIsSelected.id < listLesson.length) {
-                    this.setState({ lessonIsSelected: listLesson[lessonIsSelected.id] });
+                  if (lessonIsSelected.orderNumber < listLesson.length) {
+                    this.setState({
+                      lessonIsSelected: listLesson[lessonIsSelected.orderNumber],
+                    });
                   }
                 }}
               >
@@ -217,18 +293,10 @@ class DetailCourseTab extends Component {
           <Body>
             <LessonIframe
               ref="lesson-iframe"
-              src={lessonIsSelected.url}
+              src={lessonIsSelected.link}
               title="bai-hoc"
             />
           </Body>
-          <div style={{
-            width: '100%',
-            height: '200px',
-            backgroundColor: 'grey',
-          }}
-          >
-            a
-          </div>
         </WrapBody>
       </WrapDetailCourseTab>
     );

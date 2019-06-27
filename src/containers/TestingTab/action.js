@@ -2,6 +2,7 @@ import {
   CHANGE_QUESTION_IS_SELECTED,
   GET_QUESTION_DATA,
   UPDATE_LIST_ANSWER,
+  SET_USER_INFO,
 } from './constants';
 
 export const changeOrderQuestionIsSelected = order => ({
@@ -12,10 +13,6 @@ export const changeOrderQuestionIsSelected = order => ({
 });
 
 export const getQuestionData = (listQuestion) => {
-  // const listAnswer = listQuestion.map(question => ({
-  //   questionId: question.id,
-  //   answerId: null,
-  // }));
   const listAnswer = new Map();
   listQuestion.forEach(question => listAnswer.set(question.id, null));
   return ({
@@ -32,6 +29,15 @@ export const updateListAnswer = (listAnswer) => {
     type: UPDATE_LIST_ANSWER,
     payload: {
       listAnswer,
+    },
+  });
+};
+
+export const setUserInfo = (userInfo) => {
+  return ({
+    type: SET_USER_INFO,
+    payload: {
+      userInfo,
     },
   });
 };

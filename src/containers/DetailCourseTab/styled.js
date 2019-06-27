@@ -12,25 +12,27 @@ export const WrapSideBar = styled.div`
   width: 20%;
   height: 100%;
   position: relative;
-  overflow-y: auto;
   background-color: ${theme.bgColor.sideBar};
-`;
-
-export const WrapOptionSideBar = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 40px;
-  background-color: ${theme.bgColor.green};
+  flex-direction: column;
 `;
 
-export const WrapBackListCourseBtn = styled.div`
+export const SideBar = styled.div`
+  width: 100%;
+  height: 90%;
+  overflow-x: hidden;
+  overflow-y: auto;
+`;
+
+export const HeaderSideBar = styled.div`
+  width: 100%;
+  height: 10%;
+  background-color: ${theme.bgColor.green};
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
-  color: white;
-  cursor: pointer;
 `;
 
 export const WrapBody = styled.div`
@@ -53,9 +55,12 @@ export const WrapLessonOrder = styled.div`
   cursor: pointer;
   background-color: ${props => (props['is-selected'] ? theme.bgColor.questionIsSelected : null)};
   color: ${props => (props['is-selected'] ? 'white' : 'black')};
+  white-space: nowrap;
 `;
 export const TextLessonOrder = styled.p`
+  text-overflow: ellipsis;
   user-select: none;
+  overflow: hidden;
 `;
 
 export const WrapPathTree = styled.div`

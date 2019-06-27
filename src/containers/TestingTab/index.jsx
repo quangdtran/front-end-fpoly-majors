@@ -6,10 +6,9 @@ import { Redirect, NavLink } from 'react-router-dom';
 import QuestionOrder from '@components/QuestionOrder';
 import AnswerOption from '@components/AnswerOption';
 
-import axios from 'axios';
-import configAPI from '@src/root/configAPI.json';
+import { getAllQuestion } from '@utils/api';
 
-import questions from '@src/assets/data/questions.json';
+import { convertMapToListQuestion } from '@src/utils/converter';
 
 import {
   getQuestionData,
@@ -61,23 +60,27 @@ const questionExample = {
   ],
 };
 
-const api = axios.create({
-  baseURL: configAPI.baseURL,
-  timeout: 1000,
-});
-
 class TestingTab extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirect: true,
+      isFillInfo: true,
+      isError: false,
     };
   }
 
   // LIFECYCLE:
   componentDidMount() {
-    this.props.getQuestionData(questions.map((question, i) =>
-      ({ ...question, isDone: false, order: i + 1 })));
+    const { userInfo } = this.props;
+    if (!userInfo) this.setState({ isFillInfo: false });
+    getAllQuestion()
+      .then((res) => {
+        this.props.getQuestionData(res.data.map((question, i) =>
+          ({ ...question, isDone: false, order: i + 1 })));
+      })
+      .catch(err => this.setState({
+        isError: true,
+      }));
   }
 
   // METHODS:
@@ -129,7 +132,9 @@ class TestingTab extends Component {
   }
 
   render() {
-    // if (this.state.redirect) return <Redirect to="/test/result" />;
+    if (this.state.isError) return <p>Có lỗi xảy ra vui lòng thử lại sau</p>;
+    if (!this.state.isFillInfo) return <Redirect to="/test/form-user-information" />;
+
     const {
       listQuestion,
       orderQuestionIsSelected,
@@ -155,8 +160,8 @@ class TestingTab extends Component {
             </WrapLeftProcessBar>
             <WrapRightProcessBar>
               {
-                this.getPercentProcessBar() >= 0
-                  ? <ResultBtn><ResultLink to="/test/result">Result</ResultLink></ResultBtn>
+                this.getPercentProcessBar() === 100
+                  ? <ResultBtn onClick={() => {}}><ResultLink to="/test/result">Result</ResultLink></ResultBtn>
                   : <CompletingBtn style={{ userSelect: 'none' }}>Completing...</CompletingBtn>
               }
             </WrapRightProcessBar>
@@ -204,6 +209,7 @@ const mapStateToProps = (state) => {
     listQuestion: state.testingTab.listQuestion,
     listAnswer: state.testingTab.listAnswer,
     orderQuestionIsSelected: state.testingTab.orderQuestionIsSelected,
+    userInfo: state.testingTab.userInfo,
   };
 };
 

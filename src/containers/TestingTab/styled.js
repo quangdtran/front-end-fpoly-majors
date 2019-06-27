@@ -30,7 +30,7 @@ export const DetailQuestion = styled.div`
   position: relative;
   height: 90%;
   width: 100%;
-  background-image: url(http://localhost:8080/images/bg-testing.png);
+  background-image: url(https://dght003-7228c.firebaseapp.com/images/bg-testing.png);
   background-size: cover;
   background-position:
     0 100%,

@@ -5,7 +5,8 @@
       "@src/*": ["src/*"],
       "@containers/*":["src/containers/*"],
       "@components/*":["src/components/*"],
-      "@global/*":["src/global/*"]
+      "@utils/*": ["src/utils/*"],
+      "@global/*":["src/global/*"],
     }
   }
 }
