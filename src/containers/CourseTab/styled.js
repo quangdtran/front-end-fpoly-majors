@@ -55,7 +55,8 @@ export const TextLine = styled.div`
 
 export const WrapImageCourse = styled.div`
   position: relative;
-  margin: 45px;
+  margin: 0 45px;
+  margin-bottom: 25px;
 `;
 
 export const WrapProcessBar = styled.div`

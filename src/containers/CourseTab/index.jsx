@@ -21,7 +21,7 @@ export default class CourseTab extends Component {
   render() {
     return (
       <WrapSharedArticleTab>
-        <WrapRowCourse style={{ alignItems: 'flex-start', paddingBottom: 25 }}>
+        <WrapRowCourse style={{ alignItems: 'flex-end', paddingBottom: 25 }}>
           <WrapImageCourse>
             <Link to="/learn/TKDH">
               <OverlayImageCourse>
@@ -41,7 +41,7 @@ export default class CourseTab extends Component {
             </Link>
           </WrapImageCourse>
         </WrapRowCourse>
-        <WrapRowCourse style={{ alignItems: 'flex-end' }}>
+        <WrapRowCourse style={{ alignItems: 'flex-start' }}>
           <WrapImageCourse>
             <Link to="/learn/TKW">
               <OverlayImageCourse>
