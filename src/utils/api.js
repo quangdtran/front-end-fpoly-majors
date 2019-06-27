@@ -10,6 +10,6 @@ export const getAllQuestion = () => api.get('/questions');
 export const getCourseById = courseId => api.get(`pre-taste-courses/${courseId}`);
 
 export const postTestResult = (userInfo, answers) => api.post('/test', {
-  candinate: { ...userInfo },
+  candidate: { ...userInfo },
   answers,
 });
