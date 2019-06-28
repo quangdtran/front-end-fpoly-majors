@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://dght003.herokuapp.com/api',
+  baseURL: 'http://fpolymajors.herokuapp.com/api',
   timeout: 5000,
 });
 
