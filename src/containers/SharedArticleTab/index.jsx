@@ -271,7 +271,7 @@ export default class SharedArticleTab extends Component {
                      ứng dụng trên thiết bị di động.
                   </p>
                   <br />
-                  <img src="" alt="hình ảnh minh họa chuyên ngành Ứng Dụng Phần Mềm" />
+                  <img src="https://dght003-7228c.firebaseapp.com/images/software.png" alt="hình ảnh minh họa chuyên ngành Ứng Dụng Phần Mềm" />
                 </SectionContent>
               </WrapSectionContent>
             </WrapSection>
@@ -346,7 +346,7 @@ export default class SharedArticleTab extends Component {
                      thực hiện công việc, tiếng Anh giao tiếp.
                   </p>
                   <br />
-                  <img src="" alt="hình ảnh minh họa thiết kế website" />
+                  <img src="https://dght003-7228c.firebaseapp.com/images/software.jpg" alt="hình ảnh minh họa thiết kế website" />
                 </SectionContent>
               </WrapSectionContent>
             </WrapSection>
@@ -445,6 +445,7 @@ export default class SharedArticleTab extends Component {
                      việc nhóm, kỹ năng xử lý tình huống phát sinh trong quá trình thực hiện
                      công việc, tiếng Anh giao tiếp
                   </p>
+                  <img src="https://dght003-7228c.firebaseapp.com/images/graphic.jpg" alt="hình ảnh minh họa thiết kế website" />
                 </SectionContent>
               </WrapSectionContent>
             </WrapSection>
@@ -623,7 +624,7 @@ export default class SharedArticleTab extends Component {
                     Quản trị dự án công nghệ thông tin theo phương pháp Agile.
                   </p>
                   <br />
-                  <img src="" alt="hình ảnh minh họa chuyên ngành thiết kế website" />
+                  <img src="https://dght003-7228c.firebaseapp.com/images/mobile.jpg" alt="hình ảnh minh họa chuyên ngành thiết kế website" />
                 </SectionContent>
               </WrapSectionContent>
             </WrapSection>
