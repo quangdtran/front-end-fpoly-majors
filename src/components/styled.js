@@ -261,6 +261,7 @@ export const InputFormUserInfo = styled.input`
   border: none;
   font-size: 17px;
   padding: 0 10px;
+  box-sizing: border-box;
 `;
 
 export const LabelFormUserInfo = styled.label`
