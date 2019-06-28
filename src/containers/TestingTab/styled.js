@@ -116,6 +116,8 @@ export const WrapTextQuestion = styled.div`
   height: 30%;
   width: 100%;
   padding-left: 50px;
+  word-break: break-word;
+  width: 90%;
 `;
 export const TextQuestion = styled.p`
   color: white;
